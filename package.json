@@ -1,5 +1,5 @@
 {
-  "name": "athanaeum-server",
+  "name": "athenaeum-server",
   "version": "1.0.0",
   "description": "Server for anthanaeum written in TypeScript",
   "main": "dist/index.js",
@@ -7,15 +7,16 @@
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "prestart": "npm run build",
-    "start": "node .",
+    "start": "gulp watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "athanaeum"
+    "athenaeum"
   ],
   "author": "Ethan Smith @ethanmsmith",
   "license": "ISC",
   "dependencies": {
+    "apollo-server": "^2.9.15",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "graphql": "^14.5.8",
@@ -34,6 +35,7 @@
     "@types/mongodb": "^3.3.10",
     "@types/mongoose": "^5.5.32",
     "@types/morgan": "^1.7.37",
+    "@types/node": "^12.12.21",
     "@types/nodemon": "^1.19.0",
     "@types/winston": "^2.4.4",
     "ansi-colors": "^4.1.1",

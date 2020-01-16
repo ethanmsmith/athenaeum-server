@@ -1,4 +1,4 @@
-import BookModel from './book.model';
-import ReviewModel from './review.model';
+import BookModel from "./book.model";
+import ReviewModel from "./review.model";
 
-export default { BookModel, ReviewModel }
+export default { BookModel, ReviewModel };

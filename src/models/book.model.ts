@@ -1,8 +1,18 @@
-import mongoose, { Schema, Document } from 'mongoose';
-var ObjectId = mongoose.Schema.Types.ObjectId;
-import {IReview} from './review.model';
+import mongoose, { Document, Schema } from "mongoose";
+const ObjectId = mongoose.Schema.Types.ObjectId;
+import {IReview} from "./review.model";
 
-const bookSchema: Schema = new Schema({
+export interface IBook extends Document {
+    title: string;
+    author: string;
+    genre: string;
+    keywords: [string];
+    reviews: [
+        IReview["_id"]
+    ];
+}
+
+const BookSchema: Schema = new Schema({
     title: { type: String, required: true },
     author: { type: String, required: true },
     genre: { type: String, required: true },
@@ -11,14 +21,4 @@ const bookSchema: Schema = new Schema({
     _id: ObjectId
 });
 
-export interface IBook extends Document {
-    title: string,
-    author: string,
-    genre: string,
-    keywords: [string],
-    reviews: [
-        IReview['_id']
-    ]
-}
-
-export default mongoose.model<IBook>('Book', bookSchema);
+export default mongoose.model<IBook>("Book", BookSchema);
