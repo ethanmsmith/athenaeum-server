@@ -7,22 +7,26 @@ const typeDefs = gql`
       collections: [Collection]
       collection(id: ID!): Collection
       me: User
-  };
+  }
 
   type Collection {
       things: [Thing]
   }
 
-  type Thing {
+  interface Thing {
       id: ID!
       title: String
       author: Author
-      description: string
+      description: String
       isBooked: Boolean!
   }
 
-  type Book {
+  type Book implements Thing {
       id: ID!
+      title: String
+      author: Author
+      description: String
+      isBooked: Boolean!
       name: String
       type: String
   }
@@ -34,20 +38,19 @@ const typeDefs = gql`
   }
 
   type Author {
-      fullName: String,
-      firstName: String,
-      lastName: String,
+      fullName: String
+      firstName: String
+      lastName: String
   }
 
   type Mutation {
-      addBook(book: Book): IGraphqlResponse
+      addBook(name: String, type: String): IGraphqlResponse
 
       login(email: String): String
   }
 
   interface IGraphqlResponse {
-      status: Number,
-      payload: Object
+      status: Int
   }
 `;
 
